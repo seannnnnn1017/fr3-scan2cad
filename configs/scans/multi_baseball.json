@@ -1,0 +1,185 @@
+{
+  "_comment": "Everything the robot side is allowed to know. Physical board layout (you printed it), datasheet camera FOV, rough CAD bracket guess, a text prompt.",
+  "prompt": "baseball",
+  "detector": {
+    "backend": "sam3",
+    "refine": null,
+    "conf": 0.3,
+    "aliases": [],
+    "fallback": null,
+    "min_score": 0.3
+  },
+  "board": {
+    "family": "tag36h11",
+    "tag_size_m": 0.05,
+    "tag_size_definition": "outer black boundary",
+    "centers_m": {
+      "0": [
+        -0.17,
+        -0.17
+      ],
+      "1": [
+        0.17,
+        -0.17
+      ],
+      "2": [
+        0.17,
+        0.17
+      ],
+      "3": [
+        -0.17,
+        0.17
+      ]
+    }
+  },
+  "camera_prior": {
+    "_comment": "datasheet HFOV and a rough bracket guess (link8 -> OpenCV camera); refined by calibration",
+    "hfov_deg": 70.0,
+    "mount_xyz_m": [
+      0.06,
+      0.01,
+      0.04
+    ],
+    "mount_rpy_deg": [
+      0.0,
+      0.0,
+      -85.0
+    ]
+  },
+  "home_q": [
+    0.0,
+    -0.628,
+    0.0,
+    -2.513,
+    0.0,
+    1.885,
+    0.785
+  ],
+  "seed": 1,
+  "calibration": {
+    "n_views": 16,
+    "tilt_deg": [
+      10,
+      45
+    ],
+    "distance_m": [
+      0.58,
+      0.75
+    ],
+    "roll_deg": [
+      -60,
+      60
+    ],
+    "look_offset_m": 0.04
+  },
+  "locate": {
+    "survey_height_m": 0.55,
+    "nadir_height_m": 0.4,
+    "oblique_elevation_deg": 35,
+    "oblique_distance_m": 0.36,
+    "oblique_azimuth_offsets_deg": [
+      -80,
+      80,
+      [
+        0,
+        180
+      ]
+    ],
+    "carve_half_span_m": 0.16,
+    "carve_max_height_m": 0.32,
+    "survey_points_m": [
+      [
+        0,
+        0,
+        0.75
+      ],
+      [
+        -0.2,
+        0.2
+      ],
+      [
+        0.2,
+        0.2
+      ],
+      [
+        -0.2,
+        -0.2
+      ],
+      [
+        0.2,
+        -0.2
+      ]
+    ],
+    "hull_views_as_trellis_inputs": true,
+    "oblique_fallback_elevations_deg": [
+      45,
+      25,
+      55,
+      65,
+      75,
+      85
+    ],
+    "oblique_fallback_distances_m": [
+      0.42,
+      0.32,
+      0.28,
+      0.25
+    ],
+    "oblique_fallback_azimuth_shifts_deg": [
+      15,
+      -15,
+      30,
+      -30
+    ],
+    "min_azimuth_gap_deg": 45,
+    "object_prior_box_m": [
+      0.14,
+      0.14,
+      0.16
+    ],
+    "max_trellis_inputs": 4,
+    "min_trellis_inputs": 3,
+    "nadir_fallback_heights_m": [
+      0.35,
+      0.3
+    ],
+    "nadir_fallback_tilts_deg": [
+      10,
+      20
+    ]
+  },
+  "scan": {
+    "azimuth_offsets_deg": [
+      -45,
+      45,
+      135,
+      -135
+    ],
+    "elevation_candidates_deg": [
+      35,
+      45,
+      25,
+      55
+    ],
+    "fill": 0.55,
+    "min_distance_m": 0.27,
+    "max_distance_m": 0.55,
+    "min_views": 4,
+    "fallback_elevations_deg": [
+      65,
+      75,
+      85
+    ],
+    "min_azimuth_gap_deg": 45
+  },
+  "trellis": {
+    "seed": 42,
+    "steps": 12,
+    "ss_cfg": 7.5,
+    "slat_cfg": 3.0
+  },
+  "_comment_scan": "scan.* is used only when locate.hull_views_as_trellis_inputs is false (legacy separate orbit capture)",
+  "register": {
+    "align": "hull+silhouette"
+  }
+}

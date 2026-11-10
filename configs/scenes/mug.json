@@ -1,0 +1,60 @@
+{
+  "_comment": "SIMULATOR-ONLY world description (the 'real world'). The brain never reads this file.",
+  "table": {
+    "center_xy_m": [0.35, 0.0],
+    "size_m": [1.4, 1.3],
+    "texture": "../../assets/wood.png",
+    "texture_tile_m": 0.45
+  },
+  "board": {
+    "center_xy_m": [0.47, -0.012],
+    "yaw_deg": 4.0,
+    "tag_size_m": 0.05,
+    "paper_scale": 1.6,
+    "centers_m": {"0": [-0.17, -0.17], "1": [0.17, -0.17], "2": [0.17, 0.17], "3": [-0.17, 0.17]},
+    "tag_textures_dir": "../../assets/tags"
+  },
+  "object": {
+    "usd": "isaac://Isaac/Props/Mugs/SM_Mug_D1.usd",
+    "position_xy_m": [0.495, 0.035],
+    "yaw_deg": 37.0,
+    "rotation_xyz_deg": [0, 0, 0],
+    "scale": 1.0,
+    "dynamic": true,
+    "mass_kg": 0.3
+  },
+  "lights": {
+    "dome_intensity": 700,
+    "light_target": [0.45, 0.0, 0.0],
+    "rect_lights": [
+      [[0.9, -0.8, 1.4], [0.8, 0.8], 9000, [1.0, 0.96, 0.91]],
+      [[-0.3, 0.7, 1.2], [1.0, 1.0], 3500, [0.88, 0.94, 1.0]],
+      [[0.5, 0.2, 1.8], [0.7, 0.7], 3000, [1.0, 1.0, 1.0]]
+    ]
+  },
+  "robot": {
+    "usd": "${ROBOT_USD}",
+    "gripper_poses": "${GRIPPER_POSES}",
+    "finger_pose": "closed",
+    "home_q": [0.0, -0.628, 0.0, -2.513, 0.0, 1.885, 0.785]
+  },
+  "wrist_camera": {
+    "_comment": "Like a small RGB module bolted beside the hand. Intrinsics + mount are unknown to the brain.",
+    "resolution": [1280, 720],
+    "focal_mm": 3.8,
+    "h_aperture_mm": 5.376,
+    "v_aperture_mm": 3.024,
+    "mount_xyz_m": [0.07, 0.0, 0.03],
+    "mount_rpy_deg": [180.0, 0.0, -90.0],
+    "noise_std": 1.5,
+    "noise_seed": 7
+  },
+  "recorder": {
+    "fps": 15,
+    "resolution": [1280, 720],
+    "eye": [1.50, -1.10, 1.05],
+    "look_at": [0.30, 0.0, 0.28],
+    "focal_mm": 16.0,
+    "h_aperture_mm": 20.955
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "_comment": "Everything the robot side is allowed to know. Physical board layout (you printed it), datasheet camera FOV, rough CAD bracket guess, a text prompt.",
+  "prompt": "mug",
+  "detector": {
+    "backend": "sam3",
+    "refine": null,
+    "conf": 0.3,
+    "aliases": [],
+    "fallback": "yoloe",
+    "min_score": 0.3
+  },
+  "board": {
+    "family": "tag36h11",
+    "tag_size_m": 0.05,
+    "tag_size_definition": "outer black boundary",
+    "centers_m": {
+      "0": [
+        -0.17,
+        -0.17
+      ],
+      "1": [
+        0.17,
+        -0.17
+      ],
+      "2": [
+        0.17,
+        0.17
+      ],
+      "3": [
+        -0.17,
+        0.17
+      ]
+    }
+  },
+  "camera_prior": {
+    "_comment": "datasheet HFOV and a rough bracket guess (link8 -> OpenCV camera); refined by calibration",
+    "hfov_deg": 70.0,
+    "mount_xyz_m": [
+      0.06,
+      0.01,
+      0.04
+    ],
+    "mount_rpy_deg": [
+      0.0,
+      0.0,
+      -85.0
+    ]
+  },
+  "home_q": [
+    0.0,
+    -0.628,
+    0.0,
+    -2.513,
+    0.0,
+    1.885,
+    0.785
+  ],
+  "seed": 1,
+  "calibration": {
+    "n_views": 16,
+    "tilt_deg": [
+      10,
+      45
+    ],
+    "distance_m": [
+      0.58,
+      0.75
+    ],
+    "roll_deg": [
+      -60,
+      60
+    ],
+    "look_offset_m": 0.04
+  },
+  "locate": {
+    "survey_height_m": 0.55,
+    "nadir_height_m": 0.4,
+    "oblique_elevation_deg": 35,
+    "oblique_distance_m": 0.42,
+    "oblique_azimuth_offsets_deg": [
+      -55,
+      55
+    ],
+    "carve_half_span_m": 0.16,
+    "carve_max_height_m": 0.32
+  },
+  "scan": {
+    "azimuth_offsets_deg": [
+      -45,
+      45,
+      135,
+      -135
+    ],
+    "elevation_candidates_deg": [
+      35,
+      45,
+      25,
+      55
+    ],
+    "fill": 0.55,
+    "min_distance_m": 0.27,
+    "max_distance_m": 0.55,
+    "min_views": 4
+  },
+  "trellis": {
+    "seed": 42,
+    "steps": 12,
+    "ss_cfg": 7.5,
+    "slat_cfg": 3.0
+  }
+}
